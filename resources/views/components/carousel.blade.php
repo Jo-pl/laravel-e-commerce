@@ -1,11 +1,10 @@
 <div class="carousel-container">
-    <div class="carousel-section" style="background-image:url({{url('/images/carousel/iphone14.webp')}})">
-        <a class="carousel-left-arrow" href="#">
-            <i class="fa-solid fa-chevron-left fa-xl"></i>
-        </a>
-        <a class="carousel-right-arrow" href="#">
-            <i class="fa-solid fa-chevron-right fa-xl"></i>
-        </a>
+    <div class="carousel-section">
+        <!--Image list-->
+        <div class="carousel-picture initial-pic" style="background-image:url({{url('/images/carousel/google-pixel.webp')}})"></div>
+        <div class="carousel-picture pic-1 animated-pic" style="background-image:url({{url('/images/carousel/iphone14.webp')}})"></div>
+        <div class="carousel-picture pic-2 animated-pic" style="background-image:url({{url('/images/carousel/android.webp')}})"></div>
+        <div class="carousel-picture pic-3 animated-pic" style="background-image:url({{url('/images/carousel/google-pixel.webp')}})"></div>
         <div class="carousel-counter">
             <div class="carousel-selected"></div>
             <div></div>
