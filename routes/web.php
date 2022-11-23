@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login',[SessionController::class,'create']);
 
-Route::post('/login', function () {
-    
-    return view('login');
-});
+Route::post('/login',[SessionController::class,'store']);

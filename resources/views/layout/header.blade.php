@@ -1,7 +1,9 @@
 <header>
     <ul>
         <li>
+            <a href="/">
             <img src="{{url('/images/logo/logo-no-background.png')}}" height="80px" width="80px"/>
+            </a>
         </li>
         <li>
             <a href="#a">
