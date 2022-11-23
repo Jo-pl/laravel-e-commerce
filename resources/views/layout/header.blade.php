@@ -15,7 +15,7 @@
             <input type="text" class="searchbar" placeholder="Search" onfocus="focusSearch()">
         </li>
         <li>
-            <a href="#c">
+            <a href="/login">
             <i class="fa-solid fa-right-to-bracket"></i>
             Login
             </a>
