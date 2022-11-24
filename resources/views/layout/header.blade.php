@@ -17,10 +17,18 @@
             <input type="text" class="searchbar" placeholder="Search" onfocus="focusSearch()">
         </li>
         <li>
+            @auth
+            <p class="welcome">Welcome, {{Auth::user()->name}}</p>
+            <a class="logout" href="/logout">
+            Logout
+            </a>
+            @endauth
+            @guest
             <a href="/login">
             <i class="fa-solid fa-right-to-bracket"></i>
             Login
             </a>
+            @endguest
         </li>
     </ul>
 </header>

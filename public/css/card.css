@@ -44,3 +44,15 @@
     border-bottom: 2px solid var(--soft-blue);
     width:90%;
 }
+
+.small-card{
+    height:200px;
+    width:200px;
+}
+
+@media only screen and (max-width: 600px){
+    .small-card{
+        height:150px;
+        width:150px;
+    }
+}

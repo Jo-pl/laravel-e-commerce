@@ -6,9 +6,9 @@
         <div class="carousel-picture pic-2 animated-pic" style="background-image:url({{url('/images/carousel/android.webp')}})"></div>
         <div class="carousel-picture pic-3 animated-pic" style="background-image:url({{url('/images/carousel/google-pixel.webp')}})"></div>
         <div class="carousel-counter">
-            <div class="carousel-selected"></div>
-            <div></div>
-            <div></div>
+            <div class="carousel-selected counter0"></div>
+            <div class="counter1"></div>
+            <div class="counter2"></div>
         </div>
     </div>
 </div>

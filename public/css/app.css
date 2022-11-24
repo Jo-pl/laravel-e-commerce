@@ -150,6 +150,16 @@ label{
     color:white;
 }
 
+.welcome{
+    display: inline;
+    font-size: 0.6em;
+    margin-right: 20px;
+}
+
+.logout{
+    font-size: 1em;
+}
+
 @media only screen and (max-width: 600px){
     .input-login{
         width:300px;

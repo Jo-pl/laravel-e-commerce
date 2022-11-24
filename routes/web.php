@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/login',[SessionController::class,'create']);
-
 Route::post('/login',[SessionController::class,'store']);
+Route::get('/logout',[SessionController::class,'destroy']);
