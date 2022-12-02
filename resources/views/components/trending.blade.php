@@ -1,11 +1,11 @@
+@props(['products'])
 <h1 class="title-trending">Trending products</h1>
 <div class="trending-cards">
-    <x-card bg="{{url('/images/carousel/iphone14.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/google-pixel.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/android.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/iphone14.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/google-pixel.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/android.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/iphone14.webp')}}" class="small-card"></x-card>
-    <x-card bg="{{url('/images/carousel/google-pixel.webp')}}" class="small-card"></x-card>
+    @if($products->count()>0)
+    @foreach($products as $product)
+    <x-card bg="{{url($product->img_path)}}" class="small-card" title="{{$product->name}}"></x-card>
+    @endforeach
+    @else
+    <div class="empty-message">No products yet, come back later!</div>
+    @endif
 </div>

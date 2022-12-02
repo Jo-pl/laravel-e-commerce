@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',[ProductController::class,'index'])->name('home');
 
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');

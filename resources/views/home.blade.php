@@ -2,6 +2,6 @@
 @section('content')
 <div class="home-page">
     <x-carousel></x-carousel>
-    <x-trending></x-trending>
+    <x-trending :products="$products"></x-trending>
 </div>
 @endsection

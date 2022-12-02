@@ -4,9 +4,11 @@
 
 :root{
     --soft-blue:aliceblue;
+    --hard-blue:#4267B2;
     --soft-pink:#EE9A9A;
     --focus:#ED8282;
     --gray:#96A5B3;
+    --error:red;
 }
 
 ::placeholder{
@@ -129,7 +131,7 @@ label{
 }
 
 .small-error{
-    color:red;
+    color:var(--red);
     margin-left:10px;
     margin-top: 5px;
     font-size: 1em;
@@ -161,8 +163,8 @@ label{
 }
 
 .register-link{
-    text-decoration: underline rgb(14, 14, 145);
-    color: rgb(14, 14, 145);
+    text-decoration: underline var(--hard-blue);
+    color: var(--hard-blue);
 }
 
 .flex-register{
@@ -172,8 +174,16 @@ label{
     justify-content: center;
 }
 
+.empty-message{
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: 600px){
     .input-login{
         width:300px;
+    }
+    .empty-message{
+        font-size: 1.2em;
     }
 }
