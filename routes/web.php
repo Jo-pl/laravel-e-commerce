@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[ProductController::class,'index'])->name('home');
+Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('product');
 
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');

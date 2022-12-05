@@ -45,6 +45,9 @@
 
 .card-buy{
     position:absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     top:50%;
     left:25%;
     width:50%;

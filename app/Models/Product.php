@@ -18,8 +18,8 @@ class Product extends Model
         ];
     }
 
-    public function order(){
-        return $this->belongsToMany(Orders::class);
+    public function orders(){
+        return $this->belongsToMany(Order::class);
     }
 
 }
