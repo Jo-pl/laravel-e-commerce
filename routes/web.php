@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -15,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Products
 Route::get('/',[ProductController::class,'index'])->name('home');
 Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('product');
-
+//Orders
+Route::get('/order/{product:slug}',[OrderController::class,'create'])->name('add_to_cart')->middleware('auth');
+Route::get('/checkout',[OrderController::class,'show'])->name('checkout_page')->middleware('auth');
+Route::post('/checkout',[OrderController::class,'destroy'])->name('checkout')->middleware('auth');
+Route::get('/remove_product/{product:id}/{orderID}',[OrderController::class,'update'])->name('removeProduct')->middleware('auth');
+//Authentification
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');
 Route::get('/logout',[SessionController::class,'destroy'])->name('logout');
-
 Route::get('/register',[RegisterController::class,'create'])->name('register_page');
 Route::post('/register',[RegisterController::class,'store'])->name('register');

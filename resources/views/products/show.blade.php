@@ -9,7 +9,7 @@
                 {{$product->description}}
             </div>
             <div class="buy-now">
-                <a href="product/">Add to cart</a>
+                <a href="/order/{{$product->slug}}">Add to cart</a>
             </div>
         </div>
     </div>

@@ -16,9 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        $products = Product::factory(8)->create();
-        $orders = Order::factory(8)->create();
+        User::factory(5)->create();
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin',
+            'password' => 'admin',
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+
+        $products = Product::factory(5)->create();
+        $orders = Order::factory(3)->create();
         
         Product::all()->each(function($product) use($orders){
             $product->orders()->attach(

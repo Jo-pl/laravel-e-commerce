@@ -16,12 +16,17 @@
             <div class="search-title">Search</div>
             <input type="text" class="searchbar" placeholder="Search" onfocus="focusSearch()">
         </li>
-        <li>
+        <li class="right-menu">
             @auth
             <p class="welcome">Welcome, {{Auth::user()->name}}</p>
             <a class="logout" href="/logout">
             Logout
             </a>
+            @if(Auth::user()->orders()->count()>0)
+            <a href="/checkout">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            @endif
             @endauth
             @guest
             <a href="/login">

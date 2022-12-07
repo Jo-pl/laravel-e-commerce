@@ -49,6 +49,23 @@
     outline: none;
 }
 
+.right-menu{
+    display:flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome{
+    display: inline;
+    font-size: 0.6em;
+}
+
+.logout{
+    font-size: 1em;
+}
+
 .search:hover .search-title{
     display:none;
 }
