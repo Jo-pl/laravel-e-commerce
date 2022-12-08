@@ -25,19 +25,6 @@ class DatabaseSeeder extends Seeder
             'updated_at'=>now(),
         ]);
 
-        $products = Product::factory(5)->create();
-        $orders = Order::factory(3)->create();
-        
-        Product::all()->each(function($product) use($orders){
-            $product->orders()->attach(
-                $orders->random(3)->pluck('id')->toArray()
-            );
-        });
-
-        Order::all()->each(function($order) use($products){
-            $order->products()->attach(
-                $products->random(3)->pluck('id')->toArray()
-            );
-        });
+        $products = Product::factory(12)->create();
     }
 }

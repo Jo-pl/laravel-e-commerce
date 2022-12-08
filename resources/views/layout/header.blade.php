@@ -6,15 +6,16 @@
             </a>
         </li>
         <li>
-            <a href="#a">
+            <a href="/orders">
                 <i class="fa-solid fa-truck-fast"></i>
                 Orders
             </a>
         </li>
-        <li class="search" onmouseover="">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <div class="search-title">Search</div>
-            <input type="text" class="searchbar" placeholder="Search" onfocus="focusSearch()">
+        <li class="search">
+            <a href="/orders">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Search
+            </a>
         </li>
         <li class="right-menu">
             @auth

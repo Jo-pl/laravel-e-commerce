@@ -25,7 +25,7 @@ class ProductFactory extends Factory
         return [
             //'order_id' => null,
             'type' => rand(1,2),
-            'name' => $this->faker->sentence(1,false),
+            'name' => $this->faker->unique()->sentence(1,false),
             'slug' => $this->faker->slug(),
             'description' => $this->faker->sentence(30,false),
             'price' => $this->faker->numberBetween(200,2000),

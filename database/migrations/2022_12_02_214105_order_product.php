@@ -14,6 +14,7 @@ class OrderProduct extends Migration
     public function up()
     {
         Schema::create('order_product', function (Blueprint $table) {
+            $table->integer('quantity');
             $table->foreignId('order_id');
             $table->foreignId('product_id');
         });

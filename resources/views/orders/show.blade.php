@@ -7,7 +7,7 @@
             <div class="product-in-list">
                 <img class="product-picture" src="{{$product->img_path}}">
                 <div class="rest">
-                    <div class="name"><span>{{$product->name}}</span><a class="align-right remove" href="/remove_product/{{$product->id}}/{{$order->id}}">Remove</a></div>
+                    <div class="name"><span>{{$product->quantity}} {{$product->name}}</span><a class="align-right remove" href="/remove_product/{{$order->id}}/{{$product->id}}">Remove</a></div>
                     <div class="price">Price: <span>{{$product->price}} $USD</span></div>
                 </div>
             </div>
