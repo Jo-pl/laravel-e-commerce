@@ -2,6 +2,7 @@
 @section('content')
 <div class="home-page">
     <x-carousel></x-carousel>
-    <x-trending :products="$products"></x-trending>
+    <h1 class="title-trending">Trending products</h1>
+    <x-trending :products="$products" max=8></x-trending>
 </div>
 @endsection

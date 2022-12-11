@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
             'updated_at'=>now(),
         ]);
 
-        $products = Product::factory(12)->create();
+        $products = Product::factory(50)->create();
     }
 }

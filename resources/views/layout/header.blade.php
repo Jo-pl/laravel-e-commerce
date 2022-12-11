@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="search">
-            <a href="/orders">
+            <a href="/products">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search
             </a>

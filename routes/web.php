@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 //Products
 Route::get('/',[ProductController::class,'index'])->name('home');
 Route::get('/product/{product:slug}',[ProductController::class,'show'])->name('product');
-Route::get('/products',[ProductController::class,'search'])->name('search_page');
+Route::get('/products',[ProductController::class,'search_view'])->name('search_page');
+Route::post('/products',[ProductController::class,'search'])->name('search_products');
 //Orders
 Route::get('/order/{product:slug}',[OrderController::class,'create'])->name('add_to_cart')->middleware('auth');
 Route::get('/orders',[OrderController::class,'index'])->name('orders');

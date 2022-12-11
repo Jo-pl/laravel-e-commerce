@@ -138,9 +138,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:80%;
+    width:100%;
     min-height:83vh;
     row-gap: 20px;
+    padding:5% 0;
 }
 
 .search-input{
@@ -167,4 +168,20 @@
     font-weight: bold;
     background: var(--soft-pink);
     border-radius:0 0.7rem 0.7rem 0;
+}
+
+.pagination{
+    display:flex;
+    flex-direction: row;
+}
+
+.inline-stuff >*{
+    display:inline;
+}
+
+.pagination-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
