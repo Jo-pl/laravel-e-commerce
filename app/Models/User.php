@@ -45,4 +45,14 @@ class User extends Authenticatable
         return $this->HasMany(Order::class);
     }
 
+    public function getQuantity(){
+        $order = $this->orders()->where('status',1)->first();
+        $products = $order->first()->products;
+        $quantity = 0;
+        foreach($products as $product){
+            $quantity += OrderProduct::getQuantity($order->id,$product->id);
+        }
+        return $quantity;
+    }
+
 }

@@ -25,7 +25,12 @@
             </a>
             @if(Auth::user()->orders()->where('status',1)->count()>0)
             <a href="/checkout">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="fa-stack fa-1x">
+                    <i class="fa solid fa-cart-shopping fa-stack-1x"></i>
+                    <i class="fa-stack-1x fa-inverse" style="font-size:0.5em; color:black;vertical-align: super;">
+                        {{Auth::user()->getQuantity()}}
+                    </i>
+                  </span>
             </a>
             @endif
             @endauth

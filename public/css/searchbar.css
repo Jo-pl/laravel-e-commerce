@@ -31,3 +31,20 @@
 .logout{
     font-size: 1em;
 }
+
+/*.fa-cart-icon{
+    position:relative;
+}
+
+.items-in-cart-icon{
+    font-size: 1em;
+    /*color:var(--soft-blue);
+    color:black;
+    position:absolute;
+    top:50%;
+    right:50%;
+}*/
+
+.number-in-cart{
+    color:black;
+}
