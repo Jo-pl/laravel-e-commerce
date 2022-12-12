@@ -22,4 +22,12 @@ class Product extends Model
         return $this->belongsToMany(Order::class);
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn($query, $search)=>
+        $query->where(fn($query)=>
+            $query->where('name','like','%' . $search . '%')
+        ));
+    }
+
 }

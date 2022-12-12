@@ -23,7 +23,7 @@
             <a class="logout" href="/logout">
             Logout
             </a>
-            @if(Auth::user()->orders()->count()>0)
+            @if(Auth::user()->orders()->where('status',1)->count()>0)
             <a href="/checkout">
                 <i class="fa-solid fa-cart-shopping"></i>
             </a>

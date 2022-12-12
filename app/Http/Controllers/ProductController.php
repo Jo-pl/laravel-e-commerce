@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
 
     public function search(){
         return view('products.search',[
-            'products' => Product::all()
+            'products' => Product::latest()
             ->filter(request(['search']))
             ->paginate(16)->withQueryString(),
         ]);

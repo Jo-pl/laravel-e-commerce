@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function create(Product $product){
         //Need refactor since this is messy. Also need to move the update order parts out of this create order function
         $user = Auth::user();
-        $existingOrder = Order::where('user_id','like', $user->id)->first();
+        $existingOrder = Order::where('user_id','like', $user->id)->where('status',1)->first();
         if($existingOrder){
             $existingOrder->total+=$product->price;
             $existingOrder->save();            
@@ -30,6 +30,7 @@ class OrderController extends Controller
             return redirect()->back();
         }
         $order = new Order();
+        $order->status = 1;
         $order->user_id = $user->id;
         $order->total = $product->price;
         $order->save();
@@ -75,8 +76,15 @@ class OrderController extends Controller
         return view('orders.index');
     }
 
+    public function destroy(){
+        $order = Order::where('user_id',Auth::user()->id)->where('status',1)->first();
+        $order->status = 2;
+        $order->save();
+        return redirect('/');
+    }
+
     private function getOrder(){
         $user = Auth::user();
-        return $user->orders->first();
+        return $user->orders->where('status',1)->first();
     }
 }

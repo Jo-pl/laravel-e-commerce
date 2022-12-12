@@ -15,7 +15,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'total' => $this->faker->numberBetween(600,6000),    
+            'total' => $this->faker->numberBetween(600,6000),
+            'status'=> 1,
             'user_id' => User::factory(),
         ];
     }
