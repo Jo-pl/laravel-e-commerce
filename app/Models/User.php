@@ -46,12 +46,15 @@ class User extends Authenticatable
     }
 
     public function getQuantity(){
-        $order = $this->orders()->where('status',1)->first();
-        $products = $order->first()->products;
+        $order = $this->orders()->where('status',1)->where('user_id',$this->id)->first();
+        $products = $order->products;
         $quantity = 0;
+        //$inc = 0;
         foreach($products as $product){
+            //$inc++;
             $quantity += OrderProduct::getQuantity($order->id,$product->id);
         }
+        //ddd('inc: '. $inc, 'quantity: '.$quantity);
         return $quantity;
     }
 

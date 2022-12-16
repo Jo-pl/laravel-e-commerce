@@ -8,15 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class OrderProduct extends Pivot
 {
     public static function getQuantity($orderID,$productID){
-        $orderProducts = OrderProduct::where('order_id','=',$orderID)->get();
-        foreach($orderProducts as $op){
-            if($op->product_id==$productID){
-                return $op->quantity;
-            } 
+        //ddd($orderID,$productID);
+        $product = OrderProduct::where('order_id','=',$orderID)->where('product_id','=',$productID)->first();
+        if($product){
+            return $product->quantity;
         }
-        //ddd(
-        //    'orderID: '. $orderID . ' productID: '. $productID . ' item: ' .$item->first()
-        //);
         return 0;
     }
 }

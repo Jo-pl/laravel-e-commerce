@@ -1,3 +1,4 @@
+
 <header>
     <ul>
         <li>
@@ -14,7 +15,7 @@
         <li class="search">
             <a href="/products">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                Search
+                Products
             </a>
         </li>
         <li class="right-menu">

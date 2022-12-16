@@ -23,10 +23,11 @@ Route::get('/products',[ProductController::class,'search_view'])->name('search_p
 Route::post('/products',[ProductController::class,'search'])->name('search_products');
 //Orders
 Route::get('/order/{product:slug}',[OrderController::class,'create'])->name('add_to_cart')->middleware('auth');
-Route::get('/orders',[OrderController::class,'index'])->name('orders');
+Route::get('/orders',[OrderController::class,'index'])->name('orders_view')->middleware('auth');
+Route::post('/update_order',[OrderController::class,'update'])->name('update_order')->middleware('auth');
+Route::post('/orders',[OrderController::class,'search'])->name('search')->middleware('auth');
 Route::get('/checkout',[OrderController::class,'show'])->name('checkout_page')->middleware('auth');
-Route::post('/checkout',[OrderController::class,'destroy'])->name('checkout')->middleware('auth');
-Route::get('/remove_product/{order:id}/{product:id}',[OrderController::class,'update'])->name('removeProduct')->middleware('auth');
+Route::get('/delete_order/{order:id}',[OrderController::class,'destroy'])->name('deleteOrder')->middleware('auth');
 //Authentification
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');

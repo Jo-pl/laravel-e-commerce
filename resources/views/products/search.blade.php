@@ -5,7 +5,7 @@
         <div class="fancy-container">
             <form action="/products" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="text" name="search" id="search" class="search-input" required>
+                <input type="text" name="search" id="search" class="search-input" required placeholder="Search by product name">
                 <button type="submit" class="search-button">Go</button>
             </form>
         </div>
