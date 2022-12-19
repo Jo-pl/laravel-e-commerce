@@ -79,62 +79,33 @@ class OrderController extends Controller
     }
 
     public function update(Request $request){
-        $oldOrder = 
         $order = json_decode($request->all()['order']);
-        foreach($order->products as $product){
-            if($product->quantity>0){
-                $order->products()->syncWithoutDetaching([
-                    $product->id => [
-                        'quantity' => $product->quantity+1
-                    ]
-                ]);
-            }else{
-                $order->products()->detach($product->id);
-                //destroy order if it doesn't contain any products
-                if($order->products()->count()==0){
-                    $order->delete();
-                    return redirect('/');
+        $oldOrder = Order::where('id',$order->id)->get()->first();
+        //Add and remove features
+        if(isset($order->products)){
+            foreach($order->products as $product){
+                if($product->quantity>0){
+                    $oldOrder->products()->syncWithoutDetaching([
+                        $product->id => [
+                            'quantity' => $product->quantity
+                        ]
+                    ]);
+                }else{
+                    $oldOrder->products()->detach($product->id);
+                    //destroy order if it doesn't contain any products
+                    if($oldOrder->products()->count()==0){
+                        $oldOrder->delete();
+                        return redirect('/');
+                    }
                 }
             }
         }
-        $order->save();
-    }
-
-    private function addProduct($order,$product){
-        $quantity = OrderProduct::getQuantity($order->id,$product->id);
-        if($quantity==0){
-            $order->products()->attach($product->id,array('quantity'=>1));
-        }else{
-            $order->products()->syncWithoutDetaching([
-            $product->id => [
-                'quantity' => $quantity+1
-            ]
-        ]);
-        }
-        return $order;
-    }
-    //Right now this function is only use for remove, the "add" functionnality is in create
-    /*public function update(Order $order,Product $product){
-        $order->total-= $product->price;
-        $order->save(); 
-        $quantity = OrderProduct::getQuantity($order->id,$product->id);
-        //update price
-        if($quantity==1){
-            $order->products()->detach($product->id);
-            //destroy order if it doesn't contain any products
-            if($order->products()->count()==0){
-                $order->delete();
-                return redirect('/');
-            }
-        }else{
-            $order->products()->syncWithoutDetaching([
-                $product->id => [
-                    'quantity' => $quantity-1
-                ]
-            ]);
-        }
+        //Other params
+        $oldOrder->total = $order->total;
+        $oldOrder->status = $order->status;
+        $oldOrder->save();
         return redirect()->back();
-    }*/
+    }
 
     public function index(){
         if(Auth::user()->email=="admin@admin"){
@@ -162,13 +133,6 @@ class OrderController extends Controller
                 'orders'=> $orders
             ]);
         }
-    }
-
-    public function changeStatus(){
-        $order = Order::where('user_id',Auth::user()->id)->where('status',1)->first();
-        $order->status = 2;
-        $order->save();
-        return redirect('/');
     }
 
     public function destroy(Order $order){

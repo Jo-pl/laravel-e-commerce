@@ -33,14 +33,13 @@
             </div>
         </div>
     </div>
-
     <div class="edit-form">
         <div class="edit-box">
             <img class="x-close" src="/images/other/x.webp" onClick="toggleEditForm()">
             <div class="box-title">Box-title</div>
             <div class="second-box-title">Products:</div>
             <div class="edit-product-list"></div>
-            <div class="second-box-title">Total: <input class="edit-total" type="number"></div>
+            <div class="second-box-title">Total: <input id="total" onChange="updateTotal()" onKeydown="updateTotal()" onPaste="updateTotal()" onInput="updateTotal()" id="total" class="edit-total" type="number"></div>
             <div class="confirm-box">
                 <form method="POST" action="/update_order">
                 @csrf

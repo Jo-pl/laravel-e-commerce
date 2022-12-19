@@ -14,8 +14,8 @@ function carouselChange(){
     index++;
 }
 
-function togglePopup($order_id){
-    selectedID = $order_id;
+function togglePopup(order_id){
+    selectedID = order_id;
     let visibile = $('.warning-container').css('visibility')=='visible';
     if(visibile){
         $('.warning-container').css('visibility','hidden');
@@ -43,6 +43,7 @@ function toggleEditForm(order){
             '<div class="align-right"><strong><a onClick="addQuantity(' + product['id'] +')">+</a> <a onClick="removeQuantity(' + product['id'] + ')">-</a></strong></div>' + '</div>'));
         });
     }
+    $("#order").val(JSON.stringify(selectedOrder));
 }
 
 function addQuantity($product_id){
@@ -55,6 +56,14 @@ function addQuantity($product_id){
         }
         return product;
     });
+    $("#order").val(JSON.stringify(selectedOrder));
+}
+
+function updateTotal(){
+    selectedOrder['total'] = $("#total").val();
+    console.log(selectedOrder['total']);
+    console.log('hum');
+    $("#order").val(JSON.stringify(selectedOrder));
 }
 
 function removeQuantity($product_id){
@@ -67,6 +76,7 @@ function removeQuantity($product_id){
         }
         return product;
     });
+    $("#order").val(JSON.stringify(selectedOrder));
 }
 
 function deleteOrder(){
