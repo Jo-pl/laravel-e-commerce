@@ -24,11 +24,11 @@ Route::post('/products',[ProductController::class,'search'])->name('search_produ
 //Orders
 Route::get('/order/{product:slug}',[OrderController::class,'create'])->name('add_to_cart')->middleware('auth');
 Route::get('/orders',[OrderController::class,'index'])->name('orders_view')->middleware('auth');
-Route::post('/update_order',[OrderController::class,'update'])->name('update_order')->middleware('auth');
 Route::post('/orders',[OrderController::class,'search'])->name('search')->middleware('auth');
-Route::get('/checkout',[OrderController::class,'show'])->name('checkout_page')->middleware('auth');
-Route::post('/checkout',[OrderController::class,'update'])->name('checkout')->middleware('auth');
-Route::get('/delete_order/{order:id}',[OrderController::class,'destroy'])->name('delete_order')->middleware('auth');
+Route::post('/update_order',[OrderController::class,'update'])->name('update_order')->middleware('auth','valid_order');
+Route::get('/checkout',[OrderController::class,'show'])->name('checkout_page')->middleware(['auth','valid_order']);
+Route::post('/checkout',[OrderController::class,'update'])->name('checkout')->middleware('auth','valid_order');
+Route::get('/delete_order/{order:id}',[OrderController::class,'destroy'])->name('delete_order')->middleware('auth','valid_order');
 //Authentification
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');
