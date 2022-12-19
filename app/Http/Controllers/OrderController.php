@@ -15,18 +15,7 @@ class OrderController extends Controller
         $user = Auth::user();
         $existingOrder = Order::where('user_id','like', $user->id)->where('status',1)->first();
         if($existingOrder){
-            $existingOrder->total+=$product->price;
-            $existingOrder->save();            
-            $quantity = OrderProduct::getQuantity($existingOrder->id,$product->id);
-            if($quantity==0){
-                $existingOrder->products()->attach($product->id,array('quantity'=>1));
-            }else{
-                $existingOrder->products()->syncWithoutDetaching([
-                    $product->id => [
-                        'quantity' => $quantity+1
-                    ]
-                ]);
-            }
+            $this->addProduct($existingOrder,$product);
             return redirect()->back();
         }
         $order = new Order();
@@ -36,6 +25,21 @@ class OrderController extends Controller
         $order->save();
         $order->products()->attach($product->id,array('quantity'=>1));
         return redirect()->back();
+    }
+
+    private function addProduct($existingOrder,$product){
+        $existingOrder->total+=$product->price;
+        $existingOrder->save();            
+        $quantity = OrderProduct::getQuantity($existingOrder->id,$product->id);
+        if($quantity==0){
+            $existingOrder->products()->attach($product->id,array('quantity'=>1));
+        }else{
+            $existingOrder->products()->syncWithoutDetaching([
+                $product->id => [
+                    'quantity' => $quantity+1
+                ]
+            ]);
+        }
     }
 
     public function search(){
@@ -104,7 +108,14 @@ class OrderController extends Controller
         $oldOrder->total = $order->total;
         $oldOrder->status = $order->status;
         $oldOrder->save();
-        return redirect()->back();
+        //Check routes for redirect and total tax 
+        if($request->path()=="checkout"){
+            $oldOrder->total = ($order->total*1.15);
+            $oldOrder->save();
+            return redirect('/');
+        }else{
+            return redirect()->back();
+        }
     }
 
     public function index(){

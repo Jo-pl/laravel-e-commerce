@@ -4,7 +4,7 @@
     <div class="show-product">
         <img class="product-img-big" src="{{$product->img_path}}">
         <div class="product-text">
-            <div class="product-title">{{$product->name}}</div>
+            <div class="product-title">{{$product->name}} <div class="small-price">{{$product->price}}$</div></div>
             <div class="product-description">
                 {{$product->description}}
             </div>

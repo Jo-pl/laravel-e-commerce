@@ -27,7 +27,8 @@ Route::get('/orders',[OrderController::class,'index'])->name('orders_view')->mid
 Route::post('/update_order',[OrderController::class,'update'])->name('update_order')->middleware('auth');
 Route::post('/orders',[OrderController::class,'search'])->name('search')->middleware('auth');
 Route::get('/checkout',[OrderController::class,'show'])->name('checkout_page')->middleware('auth');
-Route::get('/delete_order/{order:id}',[OrderController::class,'destroy'])->name('deleteOrder')->middleware('auth');
+Route::post('/checkout',[OrderController::class,'update'])->name('checkout')->middleware('auth');
+Route::get('/delete_order/{order:id}',[OrderController::class,'destroy'])->name('delete_order')->middleware('auth');
 //Authentification
 Route::get('/login',[SessionController::class,'create'])->name('login_page');
 Route::post('/login',[SessionController::class,'store'])->name('login');

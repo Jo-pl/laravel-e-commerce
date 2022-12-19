@@ -22,6 +22,7 @@
             @endforeach
         </div>
     </div>
+    @if($orders->count()>0)
     <div class="warning-container">
         <div class="warning-box">
             <div class="warning-message">
@@ -49,6 +50,7 @@
             </div> 
         </div>
     </div>
+    @endif
 </div>
 
 @endsection

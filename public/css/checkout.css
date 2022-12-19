@@ -59,6 +59,10 @@
     text-decoration: underline;
 }
 
+.remove:hover{
+    cursor: pointer;
+}
+
 .name{
     display:flex;
     flex-direction: row;

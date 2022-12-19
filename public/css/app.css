@@ -383,6 +383,12 @@ label{
     font-size: 1.5em;
 }
 
+.small-price{
+    font-size: 0.5em;
+    font-weight:400;
+    color:var(--focus);
+}
+
 @media only screen and (max-width: 600px){
     .input-login{
         width:300px;

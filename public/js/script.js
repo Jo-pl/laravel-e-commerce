@@ -80,5 +80,10 @@ function removeQuantity($product_id){
 }
 
 function deleteOrder(){
-    location = '/deleteOrder/'+selectedID+'';
+    location = '/delete_order/'+selectedID+'';
+}
+
+function setOrder(order){
+    selectedOrder=order;
+    console.log('here');
 }
