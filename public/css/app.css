@@ -389,6 +389,48 @@ label{
     color:var(--focus);
 }
 
+.relative-container{
+    position:fixed;
+    top:0%;
+    width:30vw;
+    height:10vh;
+    margin: 1% auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 30px;
+    background-color: var(--soft-pink);
+    animation: container-fade 5s forwards;
+}
+
+@keyframes container-fade {
+    0%{
+        opacity: 1;
+    }
+
+    50%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+        display:none;
+    }
+}
+
+.feedback-container{
+    position:relative;
+    display:flex;
+    height:100%;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-title{
+    font-size: 1.5em;
+}
+
 @media only screen and (max-width: 600px){
     .input-login{
         width:300px;
@@ -402,5 +444,26 @@ label{
     .show-product{
         margin:20px 0px;
         row-gap: 20px;
+    }
+
+    header{
+        font-size: 0.7em;
+    }
+
+    header ul{
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+    }
+
+    .search-input{
+        width:200px;
+    }
+
+    .feedback-title{
+        font-size: 1.5em;
+    }
+
+    .relative-container{
+        width:300px;
     }
 }

@@ -22,7 +22,7 @@
             @endforeach
         </div>
     </div>
-    @if($orders->count()>0)
+    @if($orders->count()>0 && Auth::user()->email=="admin@admin")
     <div class="warning-container">
         <div class="warning-box">
             <div class="warning-message">

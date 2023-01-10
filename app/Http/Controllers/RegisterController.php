@@ -14,7 +14,6 @@ class RegisterController extends Controller
     }
 
     function store(){
-
         $credentials = request()->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],

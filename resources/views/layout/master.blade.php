@@ -14,6 +14,11 @@
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
+    @if(session()->has('success'))
+    <div class="relative-container">
+        <x-feedback-message title="{{session()->get('success')}}"></x-feedback-message>
+    </div>
+    @endif
     @include('layout.header')
     @yield('content')
     @include('layout.footer')

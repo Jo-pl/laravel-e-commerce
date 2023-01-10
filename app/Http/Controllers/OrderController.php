@@ -112,9 +112,9 @@ class OrderController extends Controller
         if($request->path()=="checkout"){
             $oldOrder->total = ($order->total*1.15);
             $oldOrder->save();
-            return redirect('/');
+            return redirect('/')->with('success','Thank you, we will be in touch shortly');
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('success','Order updated');
         }
     }
 
@@ -148,7 +148,7 @@ class OrderController extends Controller
 
     public function destroy(Order $order){
         $order->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Order cancelled');
     }
 
     private function getOrder(){
